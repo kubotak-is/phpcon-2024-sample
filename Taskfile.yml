@@ -1,0 +1,28 @@
+version: '3'
+
+tasks:
+  build_container_php:
+    desc: phpコンテナをbuildする
+    cmds:
+      - docker compose build --no-cache php
+  up:
+    desc: 開発環境を立ち上げる
+    cmds:
+      - docker compose up -d php
+  down:
+    desc: 開発環境を落とす
+    cmds:
+      - docker compose down
+  composer_install:
+    desc: アプリケーションに依存するPHPライブラリをインストールする
+    cmds:
+      - docker compose exec php composer install
+    sources:
+      - composer.json
+      - composer.lock
+    generates:
+      - vendor/**
+  ssh:
+    desc: 開発環境内にsshで入る
+    cmds:
+      - docker compose exec php /bin/bash
