@@ -1,4 +1,4 @@
-FROM php:8.4.0RC4-apache-bullseye
+FROM php:8.4.1-apache-bullseye
 
 # Apache のモジュールを有効化
 RUN a2enmod deflate expires rewrite

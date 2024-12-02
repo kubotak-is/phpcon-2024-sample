@@ -6,11 +6,11 @@ namespace App\Application\Settings;
 
 class Settings implements SettingsInterface
 {
-    private array $settings;
-
-    public function __construct(array $settings)
+    /**
+     * @param array<mixed, mixed> $settings
+     */
+    public function __construct(readonly private array $settings)
     {
-        $this->settings = $settings;
     }
 
     /**

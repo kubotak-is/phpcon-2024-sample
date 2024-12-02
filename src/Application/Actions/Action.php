@@ -19,6 +19,9 @@ abstract class Action
 
     protected Response $response;
 
+    /**
+     * @var array<string, mixed>
+     */
     protected array $args;
 
     public function __construct(LoggerInterface $logger)
@@ -27,8 +30,9 @@ abstract class Action
     }
 
     /**
-     * @throws HttpNotFoundException
+     * @param array<string, mixed> $args
      * @throws HttpBadRequestException
+     * @throws HttpNotFoundException
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
@@ -50,14 +54,6 @@ abstract class Action
     abstract protected function action(): Response;
 
     /**
-     * @return array|object
-     */
-    protected function getFormData()
-    {
-        return $this->request->getParsedBody();
-    }
-
-    /**
      * @return mixed
      * @throws HttpBadRequestException
      */
@@ -71,18 +67,19 @@ abstract class Action
     }
 
     /**
-     * @param array|object|null $data
+     * @param array<mixed|mixed>|object|null $data
      */
-    protected function respondWithData($data = null, int $statusCode = 200): Response
+    protected function respondWithData(array|object|null $data = null, int $statusCode = 200): Response
     {
         $payload = new ActionPayload($statusCode, $data);
 
         return $this->respond($payload);
     }
 
+
     protected function respond(ActionPayload $payload): Response
     {
-        $json = json_encode($payload, JSON_PRETTY_PRINT);
+        $json = json_encode($payload, JSON_PRETTY_PRINT|JSON_THROW_ON_ERROR);
         $this->response->getBody()->write($json);
 
         return $this->response
