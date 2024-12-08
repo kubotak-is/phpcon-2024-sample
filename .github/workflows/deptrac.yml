@@ -1,4 +1,4 @@
-name: PHPUnit Test
+name: Deptrac Analysis
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: PHPUnit Test
+name: PHPStan Analysis
 
 on:
   push:
