@@ -4,3 +4,4 @@
 /logs/*
 !/logs/README.md
 .phpunit.result.cache
+.task

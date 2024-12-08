@@ -34,3 +34,15 @@ tasks:
       - src/**
     ignores:
       - src/Kernel.php
+  format:
+    desc: php_codesnifferを実行する
+    cmds:
+      - docker compose exec php vendor/bin/phpcbf
+  test:
+    desc: テストを実行する
+    cmds:
+      - docker compose exec php vendor/bin/phpunit
+    sources:
+      - tests/**
+    ignores:
+      - tests/TestCase.php

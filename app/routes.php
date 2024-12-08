@@ -18,7 +18,7 @@ return function (App $app) {
         return $response;
     });
 
-    $app->group('/selling_targets', function (Group $group) {
-        $group->get('/{id}', \App\Application\Actions\SellingTargets\GetIdAction::class);
+    $app->group('/api/acquirer/selling_targets', function (Group $group) {
+        $group->get('/{id}', \App\Application\Actions\Acquirer\SellingTargets\GetIdAction::class);
     });
 };
