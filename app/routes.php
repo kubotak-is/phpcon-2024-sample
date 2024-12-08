@@ -21,4 +21,8 @@ return function (App $app) {
     $app->group('/api/acquirer/selling_targets', function (Group $group) {
         $group->get('/{id}', \App\Application\Actions\Acquirer\SellingTargets\GetIdAction::class);
     });
+
+    $app->group('/api/seller/selling_targets', function (Group $group) {
+        $group->get('/{id}', \App\Application\Actions\Seller\SellingTargets\GetIdAction::class);
+    });
 };
