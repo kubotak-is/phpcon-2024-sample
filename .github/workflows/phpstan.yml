@@ -1,0 +1,34 @@
+name: PHPUnit Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. リポジトリをチェックアウト
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      # 2. PHP 8.4 をセットアップ
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, dom, pdo, pdo_mysql
+          coverage: xdebug
+
+      # 3. Composer のセットアップ
+      - name: Install dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist
+
+      # 4. PHPStan の実行
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse
