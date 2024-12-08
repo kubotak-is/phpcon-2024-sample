@@ -7,7 +7,7 @@ namespace App\Application\Responder\Acquirer\SellingTarget;
 use App\Application\Responder\Responder;
 use App\Domain\Acquirer\SellingTarget\NameClearSellingTarget;
 
-class NameClearResponder implements Responder
+class NameClearResponder extends Responder
 {
     public function __construct(
         private readonly NameClearSellingTarget $sellingTarget

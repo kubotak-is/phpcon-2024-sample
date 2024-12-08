@@ -1,0 +1,30 @@
+deptrac:
+  paths:
+    - ./src
+  exclude_files:
+    - '#.*test.*#'
+  layers:
+    - name: SellerActions
+      collectors:
+        - type: classNameRegex
+          value: '#.*App\\Application\\Actions\\Seller\\.*#'
+    - name: AcquirerActions
+      collectors:
+        - type: classNameRegex
+          value: '#.*App\\Application\\Actions\\Acquirer\\.*#'
+    - name: AcquirerRepository
+      collectors:
+        - type: classNameRegex
+          value: '#.*Infrastructure\\Persistence\\Acquirer.*#'
+    - name: AcquirerDomain
+      collectors:
+        - type: classNameRegex
+          value: '#.*App\\Domain\\Acquirer\\.*#'
+  ruleset:
+    SellerActions:
+    AcquirerActions:
+      - AcquirerDomain
+    AcquirerDomain:
+      - AcquirerRepository
+    AcquirerRepository:
+      - AcquirerDomain

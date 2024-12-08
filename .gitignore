@@ -5,3 +5,4 @@
 !/logs/README.md
 .phpunit.result.cache
 .task
+.deptrac.cache

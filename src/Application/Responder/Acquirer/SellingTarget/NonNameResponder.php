@@ -7,7 +7,7 @@ namespace App\Application\Responder\Acquirer\SellingTarget;
 use App\Application\Responder\Responder;
 use App\Domain\Acquirer\SellingTarget\NonNameSellingTarget;
 
-class NonNameResponder implements Responder
+class NonNameResponder extends Responder
 {
     public function __construct(
         private readonly NonNameSellingTarget $sellingTarget

@@ -44,6 +44,6 @@ class InMemorySellingTargetRepository implements SellingTargetRepository
     public function findById(int $sellingTargetId): AbstractSellingTarget
     {
         $matching = $this->matchingIds[$sellingTargetId] ?? false;
-        return new SellingTargetBuilder()->build(['sellingTargetId' => $sellingTargetId, ...$this->sellingTargetData], $matching);
+        return (new SellingTargetBuilder())->build(['sellingTargetId' => $sellingTargetId, ...$this->sellingTargetData], $matching);
     }
 }
