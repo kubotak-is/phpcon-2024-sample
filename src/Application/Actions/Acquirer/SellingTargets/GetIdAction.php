@@ -29,9 +29,9 @@ class GetIdAction extends Action
         if ($sellingTarget->isNameClear()) {
             // @phpstan-ignore-next-line
             assert($sellingTarget instanceof NameClearSellingTarget);
-            return $this->respondWithData(new NameClearResponder($sellingTarget)->toArray());
+            return $this->respondWithData((new NameClearResponder($sellingTarget))->toArray());
         }
         assert($sellingTarget instanceof NonNameSellingTarget);
-        return $this->respondWithData(new NonNameResponder($sellingTarget)->toArray());
+        return $this->respondWithData((new NonNameResponder($sellingTarget))->toArray());
     }
 }

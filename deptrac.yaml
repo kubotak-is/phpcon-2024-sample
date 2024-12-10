@@ -16,12 +16,17 @@ deptrac:
       collectors:
         - type: classNameRegex
           value: '#.*Infrastructure\\Persistence\\Acquirer.*#'
+    - name: SellerDomain
+      collectors:
+        - type: classNameRegex
+          value: '#.*App\\Domain\\Seller\\.*#'
     - name: AcquirerDomain
       collectors:
         - type: classNameRegex
           value: '#.*App\\Domain\\Acquirer\\.*#'
   ruleset:
     SellerActions:
+      - SellerDomain
     AcquirerActions:
       - AcquirerDomain
     AcquirerDomain:
